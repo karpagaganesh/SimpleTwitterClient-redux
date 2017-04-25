@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if segue.identifier == "tweetViewSegue" {
             let tweetViewController = segue.destination as! TweetViewController
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
-            let tweet = self.tweets[indexPath.row]
+            let tweet = self.tweets[indexPath.row-1]
             let user = tweet.user
             tweetViewController.twitterTextFieldString = tweet.text!
             tweetViewController.createdTimeStampString = tweet.createdTimeStamp!

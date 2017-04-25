@@ -14,6 +14,9 @@ class User: NSObject {
     var profileURL : URL?
     var tagline: String?
     var dictionary: NSDictionary?
+    var statuses_count: String?
+    var followers_count: String?
+    var following_count: String?
     
     init(userDictionary : NSDictionary){
         self.dictionary = userDictionary
@@ -24,6 +27,12 @@ class User: NSObject {
             self.profileURL = profileURL
         }
         self.tagline = userDictionary["description"] as? String
+        var statusesCount = userDictionary["statuses_count"] as! Int
+        var followersCount = userDictionary["followers_count"] as! Int
+        var followingCount = userDictionary["friends_count"] as! Int
+        self.statuses_count = String(describing: statusesCount)
+        self.followers_count = String(describing: followersCount)
+        self.following_count = String(describing: followingCount)
         
     }
     
