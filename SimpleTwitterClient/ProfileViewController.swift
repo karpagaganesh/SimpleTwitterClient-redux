@@ -59,17 +59,27 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let navigationController = segue.destination as! UINavigationController
         if segue.identifier == "tweetViewSegue" {
-            let detailTweetViewController = navigationController.topViewController as! TweetViewController
-            detailTweetViewController.tweet = sender as! Tweet
+            let tweetViewController = segue.destination as! TweetViewController
+            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+            let tweet = self.tweets[indexPath.row]
+            let user = tweet.user
+            tweetViewController.twitterTextFieldString = tweet.text!
+            tweetViewController.createdTimeStampString = tweet.createdTimeStamp!
+            
+            tweetViewController.nameStr = user?.name
+            tweetViewController.twitterHandleString = "@"+(user?.screenName)!
+            tweetViewController.userImageURL = (user?.profileURL)!
+            tweetViewController.favouritesCount = tweet.favouritesCount
+            tweetViewController.reTweetCount = tweet.reTweetCount
+
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tweet = tweets[indexPath.row]
-        performSegue(withIdentifier: "tweetViewSegue", sender: tweet)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let tweet = tweets[indexPath.row]
+//        performSegue(withIdentifier: "tweetViewSegue", sender: tweet)
+//    }
     
     @IBAction func onLogoutButton(_ sender: UIBarButtonItem) {
         TwitterRestClient.singletonInstance.logout()
