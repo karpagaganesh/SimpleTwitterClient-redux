@@ -1429,11 +1429,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimpleTwitterClient/UserProfileCell.swift"
-            timestampString = "514792178.333185"
+            timestampString = "514793395.780437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "user"
             landmarkType = "24">
          </BreakpointContent>

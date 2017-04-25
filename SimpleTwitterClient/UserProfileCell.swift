@@ -14,10 +14,16 @@ class UserProfileCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     
+    @IBOutlet weak var tweetCountLabel: UILabel!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    
+    @IBOutlet weak var followersCountLabel: UILabel!
     var user: User! {
         didSet {
             nameLabel.text = user.name
-            
+            tweetCountLabel.text = user.statuses_count
+            followingCountLabel.text = user.following_count
+            followersCountLabel.text = user.followers_count
             if let screenName = user.screenName {
                 screenNameLabel.text = "@\(screenName)"
             }
